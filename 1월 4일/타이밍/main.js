@@ -1,3 +1,4 @@
+const ul = document.querySelector('ul');
 let startTime = null;
 
 document.addEventListener('keydown', event => {
@@ -5,10 +6,13 @@ document.addEventListener('keydown', event => {
         startTime = new Date().getTime();
     }
     const elapsedTime = new Date().getTime() - startTime;
-    const p = document.createElement('p');
-    const p2 = document.createElement('p');
-    p.innerText = `브라우저 시작으로부터 : 키가 눌린 시간 ${elapsedTime} ms`;
-    p2.innerText = `눌린 키 : ${event.key}`
-    document.body.appendChild(p);
-    document.body.appendChild(p2);
+
+    const li = document.createElement('li');
+    const span = document.createElement('span');
+    const span2 = document.createElement('span');
+    span.innerText = `최초로 키가 눌린 시점으로부터 키가 눌린 시간 : ${elapsedTime} ms, `;
+    span2.innerText = `눌린 키 : ${event.key}`;
+    li.appendChild(span);
+    li.appendChild(span2);
+    ul.append(li);
 });
