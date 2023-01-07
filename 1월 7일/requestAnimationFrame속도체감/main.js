@@ -20,28 +20,34 @@ object.dx = 2;
 
 var animationID = 0;
 let startTime = null;
+let ST = new Date().getTime();
 
-function update() {
+function update(timeStamp) {
+    animationID = requestAnimationFrame(update);
     if (object.x >= canvas.width && object.y >= canvas.height) {
         cancelAnimationFrame(animationID);
         h1.innerText = (new Date().getTime() - startTime).toString();
     }
-    object.x += object.dx;
-    object.y += object.dy;
+
+
+    const deltaTime = timeStamp - ST;
+    console.log(deltaTime);
+    ST = timeStamp;
+    object.x += object.dx * deltaTime * 0.05;
+    object.y += object.dy * deltaTime * 0.05;
+    // console.log(`${object.x},${object.dx * deltaTime * 0.05}`);
+    // console.log(`${object.y},${object.dx * deltaTime * 0.05}`);
+
+
+    // object.x += object.dx;
+    // object.y += object.dy;
 
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     ctx.fillRect(object.x, object.y, object.width, object.height);
 }
-
-function animate() {
-    animationID = requestAnimationFrame(animate);
-    update();
-}
-
 document.addEventListener('keydown', event => {
     if (startTime === null) {
-        startTime = new Date().getTime();
-        animate();
+        startTime = new Date().getTime(1);
+        update();
     }
 });
