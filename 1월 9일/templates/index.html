@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    홈화면입니다.
+    <a href="/weather">날씨페이지</a>
+    <a href="/ex">예제페이지</a> {% if not isLogined %}
+    <a href="/login">로그인</a>
+    <a href="/sign-up">회원가입</a> {% else %}
+    <a href="/logout">로그아웃</a>
+    <h1>안녕하세요, {{session['userdata']['name']}}님!</h1>
+    {% endif %}
+</body>
+
+</html>
