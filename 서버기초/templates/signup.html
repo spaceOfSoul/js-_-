@@ -25,20 +25,59 @@
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="id">
                 <small id="emailHelp" class="form-text text-muted">아이디를 작성하시오.</small>
             </div>
+            {% if state==5 %}
+            <div class="alert alert-danger" role="alert">
+                아이디가 중복입니다.
+            </div>
+            {% elif state == 1 %}
+            <div class="alert alert-danger" role="alert">
+                아이디가 공란입니다.
+            </div>
+            {% endif %}
             <div class="form-group">
                 <label for="exampleInputEmail1">이메일</label>
                 <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email">
                 <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
+            {% if state==2 %}
+            <div class="alert alert-danger" role="alert">
+                이메일이 공란입니다..
+            </div>
+            {% endif %}
             <div class="form-group">
                 <label for="exampleInputEmail1">이름</label>
                 <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name">
                 <small id="emailHelp" class="form-text text-muted">이름칸</small>
             </div>
+            {% if state==4 %}
+            <div class="alert alert-danger" role="alert">
+                이름이 공란입니다.
+            </div>
+            {% endif %}
             <div class="form-group">
                 <label for="exampleInputPassword1">비밀번호</label>
                 <input type="password" class="form-control" id="exampleInputPassword1" name="pw">
+                <small id="emailHelp" class="form-text text-muted">비밀번호는 문자구성 상관없이 10글자 이상</small>
+                <small id="emailHelp" class="form-text text-muted">혹은, 2종 이상 문자로 8자리 이상</small>
             </div>
+            {% if state==3 %}
+            <div class="alert alert-danger" role="alert">
+                비밀번호가 공란입니다.
+            </div>
+            {% endif %}
+            <div class="form-group">
+                <label for="exampleInputPassword1">비밀번호 확인란</label>
+                <input type="password" class="form-control" id="exampleInputPassword1" name="pw_check">
+            </div>
+            {% if state==6 %}
+            <div class="alert alert-danger" role="alert">
+                비밀번호가 일치하지 않습니다.
+            </div>
+            {% elif state==7 %}
+            <div class="alert alert-danger" role="alert">
+                비밀번호에 어긋납니다.<br> 비밀번호는 2종 이상 문자로 구성된 8자리의 비밀번호이거나, <br> 문자구성 상관없이 10글자이상이어야 합니다.
+            </div>
+            {% endif %}
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
